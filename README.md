@@ -27,11 +27,11 @@ Unlike heavy desktop applications, MD2PDF is a **completely static web app**. No
 
 ```text
 MD2PDF/
- index.html        # Main entry point and UI structure
- style.css         # Premium styling and print-specific optimizations
- main.py           # PyScript logic for Markdown conversion
- pyscript.toml     # Configuration and dependencies for PyScript
- README.md         # Project documentation (you are here)
+├── index.html       # Main entry point and UI structure
+├── style.css        # Premium styling and print-specific optimizations
+├── main.py          # PyScript logic for Markdown conversion
+├── pyscript.toml    # Configuration and dependencies for PyScript
+└── README.md        # Project documentation (you are here)
 ```
 
 ## Background & Rationale
@@ -51,11 +51,3 @@ You only need a modern web browser (Chrome, Firefox, Edge, or Safari).
 3. Observe the live preview on the right.
 4. Click the **"Export PDF"** button to open the browser's print dialog.
 5. Set the destination to **"Save as PDF"** and ensure "Background graphics" is enabled for the best look.
-
-## License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
-
-*Crafted with care for the Markdown community.*
