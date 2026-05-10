@@ -70,7 +70,8 @@
                 
                 // We use a fixed width (A4 width approx) and dynamic height
                 // 1px is approx 0.264583mm
-                const heightMm = (height * 0.264583) + 20; // content height in mm + small buffer
+                // Adding 40mm to account for the 2cm top/bottom padding
+                const heightMm = (height * 0.264583) + 40; 
                 
                 style.innerHTML = `@page { size: 210mm ${heightMm}mm; margin: 0; }`;
                 document.head.appendChild(style);

@@ -179,7 +179,7 @@ textarea {
     }
 
     body.long-page-print {
-        padding: 0 !important;
+        padding: 2cm !important; /* Give it space so it doesn't feel cramped */
     }
 
     main {
