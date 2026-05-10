@@ -130,16 +130,40 @@ textarea {
 #preview h1 { margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
 #preview h2 { margin-top: 2rem; margin-bottom: 1rem; color: #334155; }
 #preview p { margin-bottom: 1rem; line-height: 1.7; }
-#preview code { background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; color: #e11d48; }
-#preview pre { background: #1e293b; color: #f8fafc; padding: 1.5rem; border-radius: 8px; margin: 1rem 0; overflow-x: auto; }
-#preview pre code { background: transparent; padding: 0; color: inherit; }
+#preview code { 
+    background: #f1f5f9; 
+    padding: 0.2rem 0.4rem; 
+    border-radius: 4px; 
+    font-size: 0.9em; 
+    color: #e11d48; 
+}
+#preview pre { 
+    background: #1e293b; 
+    color: #f8fafc; 
+    padding: 1.5rem; 
+    border-radius: 8px; 
+    margin: 1rem 0; 
+    overflow-x: auto; 
+}
+/* Aggressive fix for 'text filler' visibility issue */
+#preview pre code, 
+#preview pre span { 
+    background: transparent !important; 
+    padding: 0 !important; 
+    color: inherit !important;
+}
 #preview blockquote { border-left: 4px solid #6366f1; padding-left: 1rem; margin: 1rem 0; color: #64748b; font-style: italic; }
 #preview ul, #preview ol { margin: 1rem 0 1rem 2rem; }
 #preview li { margin-bottom: 0.5rem; }
 
 /* Print Styles */
 @page {
-    margin: 0; /* Hides browser's default header and footer (date, URL, etc.) */
+    margin: 0;
+}
+
+/* Dynamically injected for long page export */
+.long-page-print {
+    padding: 0 !important;
 }
 
 @media print {
@@ -151,7 +175,11 @@ textarea {
         background: white !important;
         height: auto !important;
         overflow: visible !important;
-        padding: 2cm; /* Manually add page margins since @page margin is 0 */
+        padding: 2cm;
+    }
+
+    body.long-page-print {
+        padding: 0 !important;
     }
 
     main {
@@ -168,7 +196,6 @@ textarea {
         color: #1e293b !important;
     }
 
-    /* Force background colors to appear in PDF (especially for code blocks) */
     #preview pre {
         background: #1e293b !important;
         color: #f8fafc !important;
