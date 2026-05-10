@@ -138,21 +138,49 @@ textarea {
 #preview li { margin-bottom: 0.5rem; }
 
 /* Print Styles */
+@page {
+    margin: 0; /* Hides browser's default header and footer (date, URL, etc.) */
+}
+
 @media print {
     header, .editor-container, .label, .actions {
         display: none !important;
     }
-    body, main {
+    
+    body {
         background: white !important;
         height: auto !important;
         overflow: visible !important;
+        padding: 2cm; /* Manually add page margins since @page margin is 0 */
     }
+
+    main {
+        display: block !important;
+    }
+
     .preview-container {
         width: 100% !important;
     }
+
     #preview {
         padding: 0 !important;
         overflow: visible !important;
+        color: #1e293b !important;
+    }
+
+    /* Force background colors to appear in PDF (especially for code blocks) */
+    #preview pre {
+        background: #1e293b !important;
+        color: #f8fafc !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        border: 1px solid #334155;
+    }
+
+    #preview code {
+        background: #f1f5f9 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 }
 
