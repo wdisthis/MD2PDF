@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD2PDF | Premium Markdown to PDF Converter</title>
+    <meta name="description" content="A beautiful and static Markdown to PDF converter using PyScript. Perfect for creating readable documents.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+    <div id="loading">
+        <div class="spinner"></div>
+        <p>Loading PyScript Runtime...</p>
+    </div>
+
+    <header>
+        <h1>MD2PDF</h1>
+        <div class="actions">
+            <button class="secondary" onclick="window.print()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                Export PDF
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="editor-container">
+            <div class="label">Markdown Editor</div>
+            <textarea id="editor" placeholder="Type your markdown here..." oninput="window.convert_markdown()"></textarea>
+        </section>
+        
+        <section class="preview-container">
+            <div class="label">Live Preview</div>
+            <div id="preview" class="markdown-body"></div>
+        </section>
+    </main>
+
+    <script type="py" src="main.py" config="pyscript.toml"></script>
+
+    <script>
+        // Hide loading overlay once PyScript is ready
+        document.addEventListener('py:ready', () => {
+            const loader = document.getElementById('loading');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 500);
+        });
+
+        // Simple debounce/proxy for PyScript access if needed
+        window.convert_markdown = () => {
+            // This will be overridden by main.py
+        };
+    </script>
+</body>
+</html>

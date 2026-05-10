@@ -1,0 +1,3 @@
+name = "MD2PDF"
+description = "A modern Markdown to PDF converter powered by PyScript"
+packages = ["markdown"]
